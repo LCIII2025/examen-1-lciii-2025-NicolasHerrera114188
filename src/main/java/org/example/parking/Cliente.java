@@ -19,13 +19,16 @@ public class Cliente {
 
     public void agregarVehiculo(Vehiculo vehiculo) {
         // TODO implementar la carga de vehiculos en el cliente
-
+        vehiculos.add(vehiculo);
     }
 
     public Vehiculo buscarVehiculoPorPatente(String patente) {
         // TODO implementar la busqueda de un vehiculo segun su patente
-
-
+        for (int i = 0; i < vehiculos.size(); i++) {
+            if (vehiculos.get(i).getPatente()==patente){
+                return vehiculos.get(i);
+            }
+        }
         return null;
     }
 }
