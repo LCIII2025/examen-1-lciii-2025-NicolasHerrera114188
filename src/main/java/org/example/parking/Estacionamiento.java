@@ -14,11 +14,13 @@ public class Estacionamiento {
         // validar si existe el cliente registrado, agregar el nuevo vehiculo en la lista del cliente existente, caso contrario crear un nuevo registro
         // si el proceso es exitoso retornar TRUE
         boolean registro=false;
-        if(vehiculosEstacionados.size()<50){
+        if(vehiculosEstacionados.size()<capacidadMaxima){
             Cliente ingresoCliente=new Cliente(dni,nombre);
             ingresoCliente.agregarVehiculo(vehiculo);
             clientesRegistrados.put(nombre,ingresoCliente);
-            
+            Ticket nuevoTicket= new Ticket(ingresoCliente,vehiculo);
+            vehiculosEstacionados.put(nombre,nuevoTicket);
+            registro=true;
         }
         return registro;
     }
@@ -27,7 +29,14 @@ public class Estacionamiento {
         // TODO implementar la lógica para retirar un vehiculo del parking
         // validar que exista la patente, caso contrario arrojar la exception "Vehiculo no encontrado"
         // calcular y retornar el ticket del vehiculoEstacionado (ver Ticket.marcarSalida())
-
+        String nombreCliente;
+        for (int i=0;i< vehiculosEstacionados.size();i++){
+            for (int j = 0; j < clientesRegistrados.size(); j++) {
+                if (vehiculosEstacionados.get(clientesRegistrados.getClass().getName()).getVehiculo().getPatente().equals(patente)){
+                    return vehiculosEstacionados.get(clientesRegistrados.getClass().getName());
+                }
+            }
+        }
         return null;
     }
 
