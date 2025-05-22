@@ -25,7 +25,7 @@ public class Cliente {
     public Vehiculo buscarVehiculoPorPatente(String patente) {
         // TODO implementar la busqueda de un vehiculo segun su patente
         for (int i = 0; i < vehiculos.size(); i++) {
-            if (vehiculos.get(i).getPatente()==patente){
+            if (vehiculos.get(i).getPatente().equals(patente)){
                 return vehiculos.get(i);
             }
         }

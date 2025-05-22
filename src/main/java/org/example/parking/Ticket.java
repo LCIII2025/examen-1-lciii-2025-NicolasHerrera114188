@@ -36,8 +36,54 @@ public class Ticket {
         // el importe es por hora redondeando el tiempo hacia arriba,
         // por ejemplo si estuvo 45 minutos se le tarifa por 60, si estuvo 80 minutos se le tarifa por 120 minutos, etc...
         // retornar el importe final
-
-        return 0;
+        int precioFinal=0;
+        cliente.agregarVehiculo(vehiculo);
+        for (int i=0;i<cliente.getVehiculos().size();i++)
+        {
+            if (cliente.getVehiculos().get(i).getTipo().name().equals("AUTO")){
+                if (calcularMinutos()<60){
+                    precioFinal=100;
+                    return precioFinal;
+                }
+                if (calcularMinutos()<120){
+                    precioFinal=100*2;
+                    return precioFinal;
+                }
+                if (calcularMinutos()>120){
+                    precioFinal=100*(int)calcularMinutos();
+                    return precioFinal;
+                }
+            }
+            if (cliente.getVehiculos().get(i).getTipo().name().equals("SUV")){
+                if (calcularMinutos()<60){
+                    precioFinal=130;
+                    return precioFinal;
+                }
+                if (calcularMinutos()<120){
+                    precioFinal=130*2;
+                    return precioFinal;
+                }
+                if (calcularMinutos()>120){
+                    precioFinal=130*(int)calcularMinutos();
+                    return precioFinal;
+                }
+            }
+            if (cliente.getVehiculos().get(i).getTipo().name().equals("PICKUP")) {
+                if (calcularMinutos() < 60) {
+                    precioFinal = 180;
+                    return precioFinal;
+                }
+                if (calcularMinutos() < 120) {
+                    precioFinal = 180 * 2;
+                    return precioFinal;
+                }
+                if (calcularMinutos() > 120) {
+                    precioFinal = 180 * (int) calcularMinutos();
+                    return precioFinal;
+                }
+            }
+        }
+        return precioFinal;
     }
 
 }

@@ -13,8 +13,14 @@ public class Estacionamiento {
         // validar que no exista otro vehiculo con la misma patente, es un caso de error, retornar FALSE
         // validar si existe el cliente registrado, agregar el nuevo vehiculo en la lista del cliente existente, caso contrario crear un nuevo registro
         // si el proceso es exitoso retornar TRUE
-
-        return false;
+        boolean registro=false;
+        if(vehiculosEstacionados.size()<50){
+            Cliente ingresoCliente=new Cliente(dni,nombre);
+            ingresoCliente.agregarVehiculo(vehiculo);
+            clientesRegistrados.put(nombre,ingresoCliente);
+            
+        }
+        return registro;
     }
 
     public Ticket retirarVehiculo(String patente) throws Exception {
